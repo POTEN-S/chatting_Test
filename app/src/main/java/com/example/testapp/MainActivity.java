@@ -7,6 +7,7 @@ import android.view.MenuItem;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.navigation.NavController;
@@ -19,7 +20,8 @@ import com.example.testapp.ui.home.HomeFragment;
 import com.example.testapp.ui.post.PostFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-public class MainActivity extends FragmentActivity {
+
+public class MainActivity extends AppCompatActivity {
 
     ChattingFragment chattingFragment;
     PostFragment postFragment;
@@ -34,15 +36,12 @@ public class MainActivity extends FragmentActivity {
                 R.id.navigation_chatting, R.id.navigation_home, R.id.navigation_post)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
+        NavigationUI.setupActionBarWithNavController(this,navController,appBarConfiguration);
         NavigationUI.setupWithNavController(navView, navController);
         chattingFragment = new ChattingFragment();
         postFragment = new PostFragment();
         homeFragment = new HomeFragment();
 
-
-
-
-        getFragmentManager().beginTransaction().replace(R.id.mainactivity_framelayout,new HomeFragment()).commit();
     }
 
 

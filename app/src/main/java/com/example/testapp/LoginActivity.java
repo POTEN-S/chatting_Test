@@ -45,7 +45,7 @@ public class LoginActivity extends AppCompatActivity  {
 
         String splash_background = firebaseRemoteConfig.getString(getString(R.string.rc_color));
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            getWindow().setStatusBarColor(Color.parseColor(splash_background));
+            //getWindow().setStatusBarColor(Color.parseColor(splash_background));
         }
 
         id = (EditText)findViewById(R.id.loginActivity_edittext_id);
