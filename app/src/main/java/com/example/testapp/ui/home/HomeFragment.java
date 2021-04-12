@@ -1,6 +1,6 @@
 package com.example.testapp.ui.home;
 
-import android.support.v4.app.*;
+//import android.app.Fragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -64,9 +64,8 @@ public class HomeFragment extends Fragment {
 
 
         }
-        @NonNull
         @Override
-        public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
             View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_friend,parent,false);
 

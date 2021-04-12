@@ -28,19 +28,68 @@ public class MainActivity extends AppCompatActivity {
     HomeFragment homeFragment;
 
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         BottomNavigationView navView = findViewById(R.id.nav_view);
+
         AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.navigation_chatting, R.id.navigation_home, R.id.navigation_post)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this,navController,appBarConfiguration);
         NavigationUI.setupWithNavController(navView, navController);
+
+
         chattingFragment = new ChattingFragment();
         postFragment = new PostFragment();
         homeFragment = new HomeFragment();
+
+        getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,homeFragment).commitAllowingStateLoss();
+
+
+        navView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.navigation_chatting:{
+                        getSupportFragmentManager().beginTransaction()
+                                .replace(R.id.nav_host_fragment,chattingFragment).commit();
+                        return true;
+                    }
+
+                    case R.id.navigation_home:{
+                        getSupportFragmentManager().beginTransaction()
+                                .replace(R.id.nav_host_fragment,homeFragment).commit();
+                        return true;
+                    }
+
+                    case R.id.navigation_post:{
+                        getSupportFragmentManager().beginTransaction()
+                                .replace(R.id.nav_host_fragment,postFragment).commit();
+                        return true;
+                    }
+
+                    default: return false;
+
+
+
+
+                }
+            }
+        });
+
+
+
+
+
+
+
+
+
+
+
 
     }
 
